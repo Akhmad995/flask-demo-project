@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+    <h1>Список отзывов</h1>
+    
+    <div class="item-list">
+
+        {% if reviews %}
+            {% for item in reviews %}
+                <div class="item-blck">
+                    <div class="item-img">
+                        <img src="{{ url_for('static', filename='/img/noimage.jpg') }}" alt="" />
+                    </div> <!-- item-img  -->
+
+                    <div class="item-content">
+                        <div class="item-title"><a href="reviews/{{ item.id }}">{{ item.title }}</a></div> <!--  -->
+                        <div class="item-author">{{ item.username }}</div> <!--  -->
+                        <div class="item-date">{{ item.date }}</div> <!--  -->
+                    </div> <!-- item-content -->
+                </div> <!-- item-blck  -->
+            {% endfor %}
+        {% else %}
+            <b>Публикаций нет</b>
+        {% endif %}
+
+    </div> <!-- item-list -->
+
+{% endblock %}

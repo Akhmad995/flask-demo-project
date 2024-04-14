@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Отзыв{% endblock %}
+
+
+{% block content %}
+    <h1>{{ review.title }}</h1>
+
+    <div>{{ review.content }}</div>
+    <br>
+    <div><b>Дата публикации: {{ review.date }}</b></div>
+    <br>
+    <hr>
+    <br>
+    <a href="/">< Список новостей</a>
+    <br>
+    <br>
+    <br>
+    
+    <!--
+        Доступно только админу и автору отзыва
+    -->
+    {% if ( current_user.role == 'admin' or current_user.id == review.user_id ) %}
+        <div><a href="/reviews/update" class="btn">Изменить</a><a href="/reviews/delete" class="btn btn-red">Удалить</a></div>
+    {% endif %}
+
+    
+{% endblock %}

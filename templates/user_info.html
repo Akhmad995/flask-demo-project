@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+
+{% block content %}
+    <h1>Здравствуйте</h1>
+
+    <!--
+        Доступно только админу
+    -->
+    {% if current_user.role == 'admin' %}
+    <p><b>Все пользователи:</b></p><br>
+    <ol>
+        {% for user in users %}
+        <li style="margin-bottom: 10px;">{{ user.username }} - {{ user.age }}лет</li>
+        {% endfor %}
+    </ol>
+
+    <hr>
+    {% endif %}
+
+    
+
+    {% if current_user.is_authenticated %}
+    <br>
+    <br>
+    <a class="btn" href="/logout">Выйти</a>
+    {% endif %}
+
+{% endblock %}
