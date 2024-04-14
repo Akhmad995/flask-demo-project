@@ -28,24 +28,3 @@
 # pip install Flask-RESTful
 # pip install SQLAlchemy-serializer
 
-
-# pip install django - джанго
-# django-admin startproject my_proj - создаем проект
-# python manage.py startapp posts
-# python manage.py runserver
-# python manage.py createsuperuser
-
-# python manage.py shell
-
-# python manage.py makemigrations
-# python manage.py makemigrations posts
-# python manage.py sqlmigrate news 0001 - смотрим sql запрос
-# python manage.py migrate
-
-# pip install djangorestframework - Rest API
-
-# pip install Pillow - для работы с изображениями во время миграций
-
-# pip install djoser - библиотека для утентификации и тд
-
-# pip install django-filter
