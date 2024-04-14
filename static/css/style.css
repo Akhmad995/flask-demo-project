@@ -90,7 +90,7 @@ main {padding: 40px 0;
 .item-content {
     flex-grow: 1;
 }
-.item-title {font-size: 20px; color: #000;}
+.item-title {font-size: 20px; color: #000; margin: 0 0 10px;}
 .item-title a {text-decoration: none; color: inherit;}
 .item-title:hover {color: blue;}
 

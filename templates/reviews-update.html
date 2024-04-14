@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Обновить отзыв{% endblock %}
+
+
+{% block content %}
+    <h1>Обновить отзыв</h1>
+    
+    <form action="/reviews/update/" method="post" class="form">
+        <div>{{ form.hidden_tag() }}</div>
+        {% for field in form if field.name != 'csrf_token' %}
+        <div>
+            {{ field.label() }}
+            {{ field() }}
+        </div>
+        {% endfor %}
+    </form>
+    
+
+{% endblock %}

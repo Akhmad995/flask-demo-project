@@ -21,7 +21,7 @@
         Доступно только админу и автору отзыва
     -->
     {% if ( current_user.role == 'admin' or current_user.id == review.user_id ) %}
-        <div><a href="/reviews/update" class="btn">Изменить</a><a href="/reviews/delete" class="btn btn-red">Удалить</a></div>
+        <div><a href="/reviews/update/{{review.id}}" class="btn">Изменить</a><a href="/reviews/delete/{{review.id}}" class="btn btn-red">Удалить</a></div>
     {% endif %}
 
     

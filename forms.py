@@ -22,3 +22,9 @@ class ReviewForm(FlaskForm):
     title = StringField('Заголовок', validators=[DataRequired(), Length(max=100)])
     content = TextAreaField('Текст', validators=[DataRequired()])
     submit = SubmitField('Добавить')
+
+# Обновить отзыв
+class ReviewUpdateForm(FlaskForm):
+    title = StringField('Заголовок', validators=[DataRequired(), Length(max=100)])
+    content = TextAreaField('Текст', validators=[DataRequired()])
+    submit = SubmitField('Обновить')

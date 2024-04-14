@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -6,7 +6,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 from config import app, db, login_manager
 from models import User, Review
-from forms import UserForm, LoginForm, ReviewForm
+from forms import UserForm, LoginForm, ReviewForm, ReviewUpdateForm
 
 from datetime import datetime
 
@@ -99,11 +99,42 @@ def reviews_add():
     return render_template('reviews-add.html', form=reviewForm)
 
 
-# Работа со страницей отдельной формы
+# Показать детальную страницу отзыва
 @app.route('/reviews/<int:review_id>')
 def get_post(review_id):
     review = Review.query.get_or_404(review_id)
     return render_template('single-review.html', review=review)
+
+
+@app.route('/reviews/delete/<int:review_id>', methods=['GET', 'POST'])
+@login_required
+def delete_review(review_id):
+    review = Review.query.get_or_404(review_id)
+    db.session.delete(review)
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
+@app.route('/reviews/update/<int:review_id>', methods=['GET', 'POST'])
+@login_required
+def update_review(review_id):
+    review = Review.query.get_or_404(review_id)
+        
+    form = ReviewUpdateForm()
+
+    if form.validate_on_submit():
+        review.title = form.title.data
+        review.content = form.content.data
+        db.session.commit()
+        
+        return redirect(url_for('reviews', review_id=review.id))
+    
+    elif request.method == 'GET':
+        
+        form.title.data = review.title
+        form.content.data = review.content
+
+    return render_template('reviews-update.html', form=form)
 
 
 

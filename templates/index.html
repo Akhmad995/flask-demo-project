@@ -16,9 +16,9 @@
                     </div> <!-- item-img  -->
 
                     <div class="item-content">
-                        <div class="item-title"><a href="reviews/{{ item.id }}">{{ item.title }}</a></div> <!--  -->
-                        <div class="item-author">{{ item.username }}</div> <!--  -->
-                        <div class="item-date">{{ item.date }}</div> <!--  -->
+                        <div class="item-title"><a href="reviews/{{ item.id }}">{{ item.title }}</a></div>
+                        <div class="item-author">Автор: {{ item.user.username }}</div>
+                        <div class="item-date">Дата: {{ item.date }}</div>
                     </div> <!-- item-content -->
                 </div> <!-- item-blck  -->
             {% endfor %}
