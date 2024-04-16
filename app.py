@@ -134,6 +134,8 @@ def update_review(review_id):
         form.title.data = review.title
         form.content.data = review.content
 
+    print(review)
+
     return render_template('reviews-update.html', form=form)
 
 
